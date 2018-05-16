@@ -1,0 +1,40 @@
+
+= Swift / NWChemEx Collaboration Scripts
+
+== Installations
+
+=== Bebop
+
+==== Login
+
++/home/wozniak/Public/sfw/bebop/login/swift-t-2018-05-16/stc/bin+
+
+==== Compute
+
+== Demos
+
+Use the +run+ scripts to ease use:
+
+----
+$ ./run-bebop-local.sh 0-hello.swift
+trace: Hello World
+
+$ ./run-bebop-local.sh 1-loop.swift 
+hello: 0
+hello: 3
+hello: 2
+hello: 1
+
+$ mpiexec -n 4 ./program.sh
+program: 0 / 4
+program: 1 / 4
+program: 3 / 4
+program: 2 / 4
+
+$ ./run-bebop-local.sh -n 5 2-launch.swift
+program: id=3 0 / 4
+program: id=3 2 / 4
+program: id=3 3 / 4
+program: id=3 1 / 4
+...
+----
