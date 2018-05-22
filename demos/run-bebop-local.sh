@@ -5,7 +5,16 @@ set -eu
 
 PATH=/home/wozniak/Public/sfw/bebop/login/swift-t-2018-05-16/stc/bin:$PATH
 
-# Only needed to find e.g. C++ -based packages
+# Only needed to find e.g. Tcl/C++ -based packages
 export SWIFT_PATH=$PWD
 
-nice swift-t $*
+# Only needed to find e.g. Python/C++ -based modules
+export PYTHONPATH=$PWD
+
+PY=/soft/anaconda3/5.0.0/envs/tensorflow
+PATH=$PY/bin:$PATH
+export LD_LIBRARY_PATH=$PY/lib
+export PYTHONHOME=$PY
+export PYTHONVERBOSE=1
+
+nice swift-t -o t.tic -u $*
