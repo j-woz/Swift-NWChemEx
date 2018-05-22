@@ -1,4 +1,6 @@
 
+# Convention: Variables with braces ${V} should be in the environment
+
 CXX = g++
 
 INCLUDES = -I ${TCL}/include
@@ -25,16 +27,18 @@ library_wrap.cxx: library.i library.h Makefile
 	swig -o $(@) $(<)
 	sed -i s/Library_Init/Tcllibrary_Init/ $(@)
 
+# Tcl package generation
+pkgIndex.tcl: make-package.tcl
+	${TCL}/bin/tclsh $(<) > $(@)
+
 # pybind generation
 python_wrapper.so: python_wrapper.cxx Makefile
 	$(CXX) -shared -o $(@) \
 		$(CXXFLAGS) \
 		-I ${PYBIND}/include \
-		-I /usb1/sfw/anaconda3/include/python3.6m $(<) \
-		-Wl,-rpath -Wl,/usb1/sfw/anaconda3/lib
-
-pkgIndex.tcl: make-package.tcl
-	${TCL}/bin/tclsh $(<) > $(@)
+		${PY_INCLUDE} \
+		$(<) \
+		-Wl,-rpath -Wl,${PY_LIB}
 
 clean:
 	rm -fv *.so *.o *_wrap.cxx
