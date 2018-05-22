@@ -2,3 +2,4 @@ pkgIndex.tcl
 *.so
 *.o
 *_wrap.cxx
+*.tic
