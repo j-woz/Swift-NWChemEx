@@ -5,5 +5,5 @@
 
 void f()
 {
-  std::cout << "f()" << std::endl;
+  std::cout << "Call to f()." << std::endl;
 }
