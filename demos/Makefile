@@ -7,7 +7,11 @@ LIBS     = -L ${TCL}/lib -l tcl8.6 \
 
 CXXFLAGS = -Wall -fPIC -std=c++11 $(INCLUDES)
 
-all: pkgIndex.tcl libtcllibrary.so
+all:
+
+tcl: pkgIndex.tcl libtcllibrary.so
+
+python: python_wrapper.so
 
 libtcllibrary.so: library_wrap.o library.o
 	$(CXX) -shared -o $(@) $(^) \
@@ -16,6 +20,7 @@ libtcllibrary.so: library_wrap.o library.o
 %.o: %.cxx Makefile
 	$(CXX) -c $(CXXFLAGS) $(<)
 
+# SWIG-Tcl binding generation
 library_wrap.cxx: library.i library.h Makefile
 	swig -o $(@) $(<)
 	sed -i s/Library_Init/Tcllibrary_Init/ $(@)
@@ -34,4 +39,4 @@ pkgIndex.tcl: make-package.tcl
 clean:
 	rm -fv *.so *.o *_wrap.cxx
 
-.PHONY: clean
+.PHONY: clean tcl python
