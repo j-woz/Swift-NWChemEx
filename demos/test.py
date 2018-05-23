@@ -1,2 +1,2 @@
-import python_wrapper
-python_wrapper.f()
+import libpylibrary
+libpylibrary.f()
