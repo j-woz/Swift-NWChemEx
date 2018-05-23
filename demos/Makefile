@@ -13,9 +13,9 @@ all:
 
 tcl: pkgIndex.tcl libtcllibrary.so
 
-python: python_wrapper.so
+python: libpylibrary.so
 
-libtcllibrary.so: library_wrap.o library.o
+libtcllibrary.so: library_wrap_tcl.o library.o
 	$(CXX) -shared -o $(@) $(^) \
 		$(LIBS)
 
@@ -23,7 +23,7 @@ libtcllibrary.so: library_wrap.o library.o
 	$(CXX) -c $(CXXFLAGS) $(<)
 
 # SWIG-Tcl binding generation
-library_wrap.cxx: library.i library.h Makefile
+library_wrap_tcl.cxx: library.i library.h Makefile
 	swig -o $(@) $(<)
 	sed -i s/Library_Init/Tcllibrary_Init/ $(@)
 
@@ -32,7 +32,7 @@ pkgIndex.tcl: make-package.tcl
 	${TCL}/bin/tclsh $(<) > $(@)
 
 # pybind generation
-python_wrapper.so: python_wrapper.cxx Makefile
+libpylibrary.so: library_wrap_py.cxx Makefile
 	$(CXX) -shared -o $(@) \
 		$(CXXFLAGS) \
 		-I ${PYBIND}/include \
@@ -41,6 +41,6 @@ python_wrapper.so: python_wrapper.cxx Makefile
 		-Wl,-rpath -Wl,${PY_LIB}
 
 clean:
-	rm -fv *.so *.o *_wrap.cxx
+	rm -fv *.so *.o library_wrap_tcl.cxx
 
 .PHONY: clean tcl python

@@ -5,8 +5,9 @@ namespace py = pybind11;
 
 #include "library.cxx"
 
-PYBIND11_MODULE(python_wrapper, m) {
+// This module name must agree with the shared object filename
+PYBIND11_MODULE(libpylibrary, m) {
     m.doc() = "pybind11 example plugin"; // optional module docstring
 
-    m.def("f", &f, "A function which is void-void");
+    m.def("f", &f, "A function that is void-void");
 }

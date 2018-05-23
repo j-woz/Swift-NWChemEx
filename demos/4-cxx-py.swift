@@ -4,8 +4,8 @@ import python;
 f()
 {
   python("""
-import python_wrapper
-python_wrapper.f()
+import libpylibrary
+libpylibrary.f()
 """,
          "repr(0)");
 }
