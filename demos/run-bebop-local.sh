@@ -17,4 +17,4 @@ export LD_LIBRARY_PATH=$PY/lib
 export PYTHONHOME=$PY
 # export PYTHONVERBOSE=1
 
-nice swift-t -o t.tic -u $*
+nice swift-t -p $*
