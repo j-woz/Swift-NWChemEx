@@ -7,7 +7,7 @@ f()
 import libpylibrary
 libpylibrary.f()
 """,
-         "repr(0)");
+"repr(0)");
 }
 
 f();
