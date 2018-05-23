@@ -1,6 +1,8 @@
 #!/bin/bash -l
 set -eu
 
+# BUILD BEBOP
+
 export TCL=/home/wozniak/Public/sfw/bebop/login/tcl-8.6.5-g
 
 PATH=/soft/anaconda3/5.0.0/envs/tensorflow/bin:$PATH
