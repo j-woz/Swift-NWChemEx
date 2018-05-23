@@ -37,8 +37,7 @@ libpylibrary.so: library_wrap_py.cxx Makefile
 		$(CXXFLAGS) \
 		-I ${PYBIND}/include \
 		${PY_INCLUDE} \
-		$(<) \
-		-Wl,-rpath -Wl,${PY_LIB}
+		$(<)
 
 clean:
 	rm -fv *.so *.o library_wrap_tcl.cxx
