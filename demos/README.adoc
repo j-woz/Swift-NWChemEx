@@ -80,3 +80,9 @@ The pybind C++ wrapper
 $ ./build-bebop.sh python
 $ ./run-bebop-login.sh 4-cxx-py.swift
 ----
+
+NOTE: Python is very sensitive to its environment, and
+must be carefully compiled and run with the same
+environment.
+http://pybind11.readthedocs.io/en/master/faq.html#importerror-dynamic-module-does-not-define-init-function[See here].
+If you get these errors, Wozniak may be able to help.
