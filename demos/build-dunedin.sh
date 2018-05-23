@@ -1,9 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 set -eu
 
 # BUILD DUNEDIN
 
 export PYBIND=/home/wozniak/proj/pybind11
-export PYTHON=/home/wozniak/sfw/anaconda3
+
+source python-settings.sh
 
 make $*
