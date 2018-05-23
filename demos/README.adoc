@@ -37,10 +37,10 @@ trace: Hello World
 # Simple MPI job launch with rank number line prefixes (no Swift/T)
 $ PATH=/soft/spack-0.10.1/opt/spack/linux-centos7-x86_64/gcc-7.1.0/mpich-3.2-bsq4vhrrnuyxqel6zlzokwtprddew5ad/bin
 $ mpiexec -l -n 4 ./program.sh
-program: 0 / 4
-program: 1 / 4
-program: 3 / 4
-program: 2 / 4
+[0] program: 0 / 4
+[1] program: 1 / 4
+[2] program: 2 / 4
+[3] program: 3 / 4
 
 # Many tasks in a parallel loop
 # Note that the Swift/T tasks are load-balanced across worker ranks
