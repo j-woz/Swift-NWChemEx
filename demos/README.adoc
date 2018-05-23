@@ -30,10 +30,12 @@ $ ./run-bebop-login.sh 0-hello.swift
 trace: Hello World
 
 # Hello World - no script!
+$ PATH=/home/wozniak/Public/sfw/bebop/login/swift-t-2018-05-22/stc/bin:$PATH
 $ swift-t -E 'trace("Hello World");'
 trace: Hello World
 
-# Simple MPI job launch (no Swift/T)
+# Simple MPI job launch with rank number line prefixes (no Swift/T)
+$ PATH=/soft/spack-0.10.1/opt/spack/linux-centos7-x86_64/gcc-7.1.0/mpich-3.2-bsq4vhrrnuyxqel6zlzokwtprddew5ad/bin
 $ mpiexec -l -n 4 ./program.sh
 program: 0 / 4
 program: 1 / 4
