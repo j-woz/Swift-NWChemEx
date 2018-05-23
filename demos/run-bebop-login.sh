@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eu
 
-# RUN LOCAL
+# RUN BEBOP LOGIN
 
 PATH=/home/wozniak/Public/sfw/bebop/login/swift-t-2018-05-22/stc/bin:$PATH
 
