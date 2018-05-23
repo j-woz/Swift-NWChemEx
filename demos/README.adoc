@@ -7,7 +7,7 @@
 
 ==== Login
 
-+/home/wozniak/Public/sfw/bebop/login/swift-t-2018-05-16/stc/bin+
++/home/wozniak/Public/sfw/bebop/login/swift-t-2018-05-22/stc/bin+
 
 ==== Compute
 
