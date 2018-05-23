@@ -7,7 +7,9 @@
 
 ==== Login
 
-+/home/wozniak/Public/sfw/bebop/login/swift-t-2018-05-22/stc/bin+
+----
+/home/wozniak/Public/sfw/bebop/login/swift-t-2018-05-22/stc/bin
+----
 
 ==== Compute
 
@@ -18,24 +20,35 @@ information to help in debugging.
 
 === Simple Swift/T
 
-Use the +run+ scripts to ease use:
+Use the +run+ scripts to load the right environment variables for the system.
+Note that the arguments to the run script are simply passed to the +swift-t+
+program.
 
 ----
+# Hello World
 $ ./run-bebop-login.sh 0-hello.swift
 trace: Hello World
 
-$ ./run-bebop-login.sh 1-loop.swift
-hello: 0
-hello: 3
-hello: 2
-hello: 1
+# Hello World - no script!
+$ swift-t -E 'trace("Hello World");'
+trace: Hello World
 
-$ mpiexec -n 4 ./program.sh
+# Simple MPI job launch (no Swift/T)
+$ mpiexec -l -n 4 ./program.sh
 program: 0 / 4
 program: 1 / 4
 program: 3 / 4
 program: 2 / 4
 
+# Many tasks in a parallel loop
+# Note that the Swift/T tasks are load-balanced across worker ranks
+$ ./run-bebop-login.sh -l -n 4 1-loop.swift
+[2] hello: 0
+[1] hello: 1
+[0] hello: 2
+[2] hello: 3
+
+# Many parallel tasks in a parallel loop
 $ ./run-bebop-login.sh -n 5 2-launch.swift
 program: id=3 0 / 4
 program: id=3 2 / 4
@@ -45,6 +58,10 @@ program: id=3 1 / 4
 ----
 
 === C++ library
+
+Use the build-*.sh scripts to build with the right environment variables
+for the system.  Note that the arguments to this script
+are simply passed to the Makefile, which does the real work.
 
 library.h::
 The original application C++ library header
